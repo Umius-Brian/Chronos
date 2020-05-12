@@ -28,22 +28,28 @@ const TemperatureChart = (props) => {
       <Plot
         data = {[{
           type: 'scatter',
+          fill: 'tozeroy',
+          fillcolor: 'rgba(224, 62, 54, .6)',
+          mode: 'none',
           x: yAxis,
           y: xAxis,
-          mode: 'lines',
-          rangemode: 'nonnegative',
           name: 'CPU Temperature',
-          marker: {
-            color: '#155200',
-          }
-        }]}
-        layout = {{
-          width: 500,
-          height: 500,
-          paper_bgcolor: '#fffbe0',
-          plot_bgcolor: '#fffbe0',
           showlegend: true
-        }}
+        }]}
+        layout = {
+          {
+            width: 500,
+            height: 500,
+            paper_bgcolor: '#fffbe0',
+            plot_bgcolor: '#fffbe0',
+            legend: {
+              orientation: 'h',
+              xanchor: 'center',
+              x: .5
+            },
+            yaxis: {rangemode: 'nonnegative'}
+          }
+        }
       />
     )
   };

@@ -1,5 +1,4 @@
 import React, { useContext } from 'react';
-import { Line } from 'react-chartjs-2';
 import HealthContext from '../context/DetailsContext';
 import Plot from 'react-plotly.js';
 
@@ -9,7 +8,7 @@ const LatencyChart = (props) =>  {
   const createChart = () => {
     const xAxis = [];
     const yAxis = [];
-    
+
     for (let i = 0; i < healthData.length; i++) {
       const element = healthData[i];
       if (element.currentmicroservice === props.service || element.currentMicroservice === props.service) {
@@ -29,14 +28,26 @@ const LatencyChart = (props) =>  {
           name: `${props.service} CPU Latency`,
           marker: {
               color: '#155263',
-          }
+          },
         }]}
         layout = {{
           width: 500,
           height: 500,
           paper_bgcolor: '#fffbe0',
           plot_bgcolor: '#fffbe0',
-          showlegend: true
+          showlegend: true,
+          legend: {
+              orientation: 'h',
+              xanchor: 'center',
+              x: .5
+          },
+          xaxis: {
+            tickmode: 'linear',
+            tick0: 0,
+            dtick: 200,
+            rangemode: 'nonnegative'
+          },
+          yaxis: {rangemode: 'nonnegative'}
         }}
       />
     )
